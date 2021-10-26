@@ -1,17 +1,19 @@
-from urllib import request
 import requests
+from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
+# This function generate a bunch of urls and append them in a array
 def PathHandler(letters, img_code, end_code):
     path_array = []
-    
+
     while(img_code <= end_code):
         path = f"https://prnt.sc/{letters}{img_code}"
         img_code += 1
         path_array.append(path)
 
     return path_array
-    
+
+# This function can request a link, look for a specific balise and then get the direct url image that we need to download the image w/
 def GetImgSrc(url):
     r = requests.get(url, headers={'User-Agent': 'Chrome'})
     f = r.text
@@ -20,8 +22,9 @@ def GetImgSrc(url):
     src = img["src"]
     print(f"SRC CONVERTING : {src}")
 
-    return src 
+    return src
 
+# This function can write to the path a src in a specific format that only this function can handle
 def WriteImage(src):
     if (src[:2] != "//"):
         full_code = src.rsplit('/', 1)[-1]
@@ -35,8 +38,8 @@ def WriteImage(src):
 
         except:
             print('BAD RESPONSE')
-        
-    else: 
+
+    else:
         print("File deleted")
 
 
@@ -55,7 +58,7 @@ if __name__ == "__main__":
 
     path_array = PathHandler(letters, start, end)
     src_array = []
-    
+
     counter = 1
     size = len(path_array)
 
