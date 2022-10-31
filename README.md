@@ -10,6 +10,6 @@ aa1111
 
 3. Then he ask the amount of images (max9999)
 
-3. The program first step is sourcing all of the images and only after all the sourcing is done he will write in the /output all the images.
+3. At the first step the program will soure all of the images and only after all the sourcing is done he will write in the images in the /output.
 
 
